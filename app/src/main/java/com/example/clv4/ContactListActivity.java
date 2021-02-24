@@ -13,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ContactListActivity extends AppCompatActivity {
-
+    ArrayList<Contact> contacts;
     private View.OnClickListener onItemClickListener = view -> {
         RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder)view.getTag();
         int position = viewHolder.getAdapterPosition();
+        int contactID = contacts.get(position).getContactID();
         Intent intent = new Intent(ContactListActivity.this,MainActivity.class);
-        startActivity(intent);
+        intent.putExtra("contactID", contactID);
+            startActivity(intent);
     };
 
     @Override
@@ -31,24 +33,16 @@ public class ContactListActivity extends AppCompatActivity {
 
         ContactDataSource ds = new ContactDataSource(this);
 
-        ArrayList<String> names;
 
-        String sortBy = getSharedPreferences("MyContactListPreferences",
-
-                Context.MODE_PRIVATE).getString("sortfield", "contactname");
-
-        String sortOrder = getSharedPreferences("MyContactListPreferences",
-
-                Context.MODE_PRIVATE).getString("sortorder", "ASC");
         try{
             ds.open();
-            names = ds.getContactName();
+            contacts = ds.getContacts();
             ds.close();
 
             RecyclerView contactList = findViewById(R.id.rvContacts);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
             contactList.setLayoutManager(layoutManager);
-            ContactAdapter contactAdapter = new ContactAdapter(names);
+            ContactAdapter contactAdapter = new ContactAdapter(contacts);
             contactList.setAdapter(contactAdapter);
         }
         catch(Exception e){

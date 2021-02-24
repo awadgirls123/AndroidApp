@@ -16,31 +16,33 @@
 
         <ImageButton
             android:id="@+id/imageButtonList"
-            android:layout_width="wrap_content"
+            android:layout_width="122dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_toStartOf="@+id/imageButtonMap"
             android:layout_toLeftOf="@+id/imageButtonMap"
+            android:background="@color/system_transparent"
             app:srcCompat="@drawable/contactlisticon" />
 
         <ImageButton
             android:id="@+id/imageButtonMap"
-            android:layout_width="wrap_content"
+            android:layout_width="121dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:background="@color/system_transparent"
             app:srcCompat="@drawable/mapicon" />
 
         <ImageButton
             android:id="@+id/imageButtonSettings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="121dp"
+            android:layout_height="113dp"
             android:layout_marginStart="11dp"
             android:layout_marginLeft="11dp"
             android:layout_toEndOf="@+id/imageButtonMap"
             android:layout_toRightOf="@+id/imageButtonMap"
+            android:background="@color/system_transparent"
             app:srcCompat="@drawable/settingicon" />
     </RelativeLayout>
 
