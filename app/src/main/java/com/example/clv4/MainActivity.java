@@ -3,7 +3,6 @@ package com.example.clv4;
 
 //TODO Change the image for the app to be the contactlisticon that is in the file
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.annotation.NonNull;
