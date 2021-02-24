@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class ContactAdapter extends RecyclerView.Adapter {
     private ArrayList<Contact> contactData;
+
     private View.OnClickListener mOnItemClickListener;
 
     public class ContactViewHolder extends RecyclerView.ViewHolder{

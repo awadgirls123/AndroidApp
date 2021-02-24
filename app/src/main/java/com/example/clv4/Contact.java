@@ -21,6 +21,7 @@ public class Contact {
     }
 
     public int getContactID() {
+
         return contactID;
     }
 
@@ -29,38 +30,47 @@ public class Contact {
     }
 
     public String getContactName() {
+
         return contactName;
     }
 
     public void setContactName(String contactName) {
+
         this.contactName = contactName;
     }
 
     public String getStreetAddress() {
+
         return streetAddress;
     }
 
     public void setStreetAddress(String streetAddress) {
+
         this.streetAddress = streetAddress;
     }
 
     public String getCity() {
+
         return city;
     }
 
     public void setCity(String city) {
+
         this.city = city;
     }
 
     public String getState() {
+
         return state;
     }
 
     public void setState(String state) {
+
         this.state = state;
     }
 
     public String getZipCode() {
+
         return zipCode;
     }
 
@@ -69,11 +79,12 @@ public class Contact {
     }
 
     public String getPhoneNumber() {
-
+//        phoneNumber = View findById(R.id.textPhoneNumber);
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
+
         this.phoneNumber = phoneNumber;
     }
 

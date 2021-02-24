@@ -111,6 +111,7 @@ public class ContactDataSource {
         return contactNames;
     }
 
+
     public ArrayList<Contact> getContacts(){
         ArrayList<Contact> contacts = new ArrayList<Contact>();
 

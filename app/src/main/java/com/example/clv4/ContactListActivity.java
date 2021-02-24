@@ -13,15 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ContactListActivity extends AppCompatActivity {
-    ArrayList<Contact> contacts;
-    private View.OnClickListener onItemClickListener = view -> {
-        RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder)view.getTag();
-        int position = viewHolder.getAdapterPosition();
-        int contactID = contacts.get(position).getContactID();
-        Intent intent = new Intent(ContactListActivity.this,MainActivity.class);
-        intent.putExtra("contactID", contactID);
-            startActivity(intent);
+
+    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
+        ArrayList<Contact> contacts;
+        @Override
+        public void onClick(View view){
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
+            int position = viewHolder.getAdapterPosition();
+            int contactId = contacts.get(position).getContactID();
+            Intent intent = new Intent(ContactListActivity.this, MainActivity.class);
+                intent.putExtra("contactID",contactId);
+                startActivity(intent);
+        }
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +37,7 @@ public class ContactListActivity extends AppCompatActivity {
         initSettingsButton();
 
         ContactDataSource ds = new ContactDataSource(this);
-
-
+        ArrayList<Contact> contacts;
         try{
             ds.open();
             contacts = ds.getContacts();
