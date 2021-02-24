@@ -16,6 +16,7 @@ import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
@@ -295,17 +296,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void initSaveButton(){
         Button saveButton = findViewById(R.id.buttonSave);
         saveButton.setOnClickListener(view -> {
-            boolean wasSuccessful;
+            boolean wasSuccessful= false;
             ContactDataSource ds = new ContactDataSource(MainActivity.this);
             try{
                 ds.open();
 
                 if(currentContact.getContactID() == -1){
                     wasSuccessful = ds.insertContact(currentContact);
-                    if(wasSuccessful){
                         int newId = ds.getLastContactID();
                         currentContact.setContactID(newId);
-                    }
                 }
                 else{
                     wasSuccessful = ds.updateContact(currentContact);
@@ -320,6 +319,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 ToggleButton editToggle = findViewById(R.id.toggleButtonEdit);
                 editToggle.toggle();;
                 setForEditing(false);
+                setForEditing(false);
+                Log.w(ContactDBHelper.class.getName(), "success");
             }
         });
     }
