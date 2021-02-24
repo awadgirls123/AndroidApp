@@ -1,7 +1,9 @@
 package com.example.clv4;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ContactListActivity extends AppCompatActivity {
+
+    private View.OnClickListener onItemClickListener = view -> {
+        RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder)view.getTag();
+        int position = viewHolder.getAdapterPosition();
+        Intent intent = new Intent(ContactListActivity.this,MainActivity.class);
+        startActivity(intent);
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
