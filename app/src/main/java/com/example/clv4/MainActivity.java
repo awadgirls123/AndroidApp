@@ -2,7 +2,6 @@ package com.example.clv4;
 
 
 //TODO Change the image for the app to be the contactlisticon that is in the file
-//TODO Settings button is not connecting (app crashes when you click on the button, can be a intent thing or the onClicklistener)
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -120,10 +119,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             editCell.setInputType(InputType.TYPE_CLASS_PHONE);
         }
 
-        //TODO ScrollView issue (crashes the app) listing 5.9
         else {
-            ScrollView s = (ScrollView) findViewById(R.id.scrollView);
-            s.fullScroll(ScrollView.FOCUS_UP);
+            ScrollView s = (ScrollView) findViewById(R.id.settingsScroll);
+//            s.fullScroll(ScrollView.FOCUS_UP);
             editPhone.setInputType(InputType.TYPE_NULL);
             editCell.setInputType(InputType.TYPE_NULL);
         }
@@ -304,6 +302,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
                 if(currentContact.getContactID() == -1){
                     wasSuccessful = ds.insertContact(currentContact);
+                    if(wasSuccessful){
+                        int newId = ds.getLastContactID();
+                        currentContact.setContactID(newId);
+                    }
                 }
                 else{
                     wasSuccessful = ds.updateContact(currentContact);
