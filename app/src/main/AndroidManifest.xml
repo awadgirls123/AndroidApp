@@ -19,6 +19,7 @@
 
         </activity>
         <activity android:name=".ContactSettingsActivity"/>
+        <activity android:name=".ContactMapActivity"/>
 <!--        <activity android:name=".MainActivity"/>-->
 
     </application>
