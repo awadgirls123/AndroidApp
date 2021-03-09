@@ -6,159 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="125dp">
-
-        <TextView
-            android:id="@+id/textAddress"
-            android:layout_width="118dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="112dp"
-            android:layout_marginEnd="150dp"
-            android:contentDescription="@string/textAddress"
-            android:text="Address"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="152dp"
-            android:ems="16"
-            android:hint="Enter Street Address"
-            android:imeOptions="actionNext"
-            android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:ems="9"
-            android:hint="City"
-            android:imeOptions="actionNext"
-            android:inputType="textCapWords"
-            android:nextFocusDown="@+id/editState"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editAddress" />
-
-        <EditText
-            android:id="@+id/editState"
-            android:layout_width="56dp"
-            android:layout_height="45dp"
-            android:ems="2"
-            android:hint="State"
-            android:imeOptions="actionNext"
-            android:inputType="textCapCharacters"
-            android:maxLength="2"
-            android:nextFocusDown="@+id/editZipcode"
-            app:layout_constraintStart_toEndOf="@+id/editCity"
-            app:layout_constraintTop_toBottomOf="@+id/editAddress" />
-
-        <EditText
-            android:id="@+id/editZipcode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="196dp"
-            android:layout_marginEnd="44dp"
-            android:ems="5"
-            android:hint="Zipcode"
-            android:imeOptions="actionNext"
-            android:inputType="number"
-            android:maxLength="5"
-            android:nextFocusDown="@+id/editHome"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/buttonGetLocation"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="150dp"
-            android:text="Get Coordinates"
-            android:textColor="@color/purple_500"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editCity" />
-
-        <TextView
-            android:id="@+id/textLatitude"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="9dp"
-            android:text="Latitude"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonGetLocation" />
-
-        <TextView
-            android:id="@+id/textLongitude"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginEnd="21dp"
-            android:text="Longitude"
-            app:layout_constraintEnd_toStartOf="@+id/textNoneLongitude"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textLatitude" />
-
-        <TextView
-            android:id="@+id/textAccuracy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="7dp"
-            android:text="Accuracy"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textLongitude" />
-
-        <TextView
-            android:id="@+id/textNoneLatitude"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="9dp"
-            android:text="None"
-            app:layout_constraintStart_toEndOf="@+id/textLatitude"
-            app:layout_constraintTop_toBottomOf="@+id/buttonGetLocation" />
-
-        <TextView
-            android:id="@+id/textNoneLongitude"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="9dp"
-            android:text="None"
-            app:layout_constraintStart_toEndOf="@+id/textLongitude"
-            app:layout_constraintTop_toBottomOf="@+id/textNoneLatitude" />
-
-        <TextView
-            android:id="@+id/textNoneAccuracy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="11dp"
-            android:text="None"
-            app:layout_constraintStart_toEndOf="@+id/textAccuracy"
-            app:layout_constraintTop_toBottomOf="@+id/textNoneLongitude" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

@@ -36,6 +36,7 @@ import java.util.InputMismatchException;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.SaveDateListener {
     private Contact currentContact;
+    int contactId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +44,26 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         setContentView(R.layout.activity_main);
         initListButton();
         initMapButton();
-
         initSettingsButton();
         initToggleButton();
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            initContact(extras.getInt("contactid"));
+        }
+        else {
+            currentContact = new Contact();
+        }
         setForEditing(false);
         initChangeDateButton();
-        currentContact = new Contact();
         initTextChangedEvents();
         initSaveButton();
-        initContact();
         hideKeyboard();
 
 
 
     }
+
 
 
     //When contact list button is clicked, this method is activated
@@ -350,8 +357,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     }
 
-
-    private void initContact(int id){
+    private void initContact(int id) {
         ContactDataSource ds = new ContactDataSource(MainActivity.this);
         try{
             ds.open();
@@ -383,9 +389,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         editCell.setText(currentContact.getCellNumber());
         editEmail.setText(currentContact.geteMail());
         birthDay.setText(DateFormat.format("MM/dd/yyyy",currentContact.getBirthday().getTimeInMillis()).toString());
-
     }
-
-
 
 }

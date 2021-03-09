@@ -46,11 +46,13 @@ public class ContactSettingsActivity extends AppCompatActivity {
 
     //When setting button is clicked, this method is activated
     private void initSettingsButton(){
-        ImageButton ibSettings =(ImageButton)findViewById(R.id.imageButtonSettings);
-        ibSettings.setEnabled(false);
-
-
-    };
+        ImageButton ibSettings = (ImageButton) findViewById(R.id.imageButtonSettings);
+        ibSettings.setOnClickListener((View view) -> {
+            Intent intent = new Intent(ContactSettingsActivity.this, ContactSettingsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
+    }
 
     private void initSettings(){
         String sortBy = getSharedPreferences("MyContactListPreferences", Context.MODE_PRIVATE).getString("sortfield","contactname");
