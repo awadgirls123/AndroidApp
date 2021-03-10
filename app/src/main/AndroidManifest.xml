@@ -5,16 +5,23 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <permission android:name="com.example.mycontactlist.permission.MAPS_RECEIVE"
         android:protectionLevel="signature"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="com.example.mycontactlist.permission.MAPS_RECEIVE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>
 
+    <meta-data
+        android:name="com.google.android.maps.v2.API_KEY"
+        android:value="AIzaSyAjGz4gzBjgHNQ5WCPcbPuD2tNGT32d3k4" />
+
+    <uses-feature
+        android:name="org.apache.http.legacy"
+        android:required="false"/>
 
     <application
         android:allowBackup="true"
