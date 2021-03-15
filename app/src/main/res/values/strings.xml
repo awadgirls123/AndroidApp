@@ -1,5 +1,5 @@
 <resources>
-<!--    This will provide the list of the ids for each icon-->
+    <!--    This will provide the list of the ids for each icon-->
     <string name="app_name">CL v4</string>
     <string name="contactlist">imageButtonList</string>
     <string name="maps">imageButtonMap</string>
@@ -15,5 +15,6 @@
     <string name="name">Name</string>
     <string name="textcontact">textContact</string>
     <string name="textAddress">textAddress</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
