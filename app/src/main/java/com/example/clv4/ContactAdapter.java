@@ -72,6 +72,7 @@ public class ContactAdapter extends RecyclerView.Adapter {
 
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final  int position) {
         ContactViewHolder cvh = (ContactViewHolder) holder;
