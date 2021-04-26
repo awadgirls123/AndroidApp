@@ -80,6 +80,7 @@ public class ContactAdapter extends RecyclerView.Adapter {
         if (isDeleting) {
             cvh.getDeleteButton().setVisibility(View.VISIBLE);
             cvh.getDeleteButton().setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View view) {
                     deleteItem(position);
