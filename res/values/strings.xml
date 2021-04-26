@@ -1,0 +1,20 @@
+<resources>
+    <!--    This will provide the list of the ids for each icon-->
+    <string name="app_name">CL v4</string>
+    <string name="contactlist">imageButtonList</string>
+    <string name="maps">imageButtonMap</string>
+    <string name="settings">imageButtonSettings</string>
+    <string name="save">Save</string>
+    <string name="buttonsave">buttonSave</string>
+    <string name="togglebutton">toggleButtonEdit</string>
+    <string name="editname">editName</string>
+    <string name="imagebuttonlist">imageButtonList</string>
+    <string name="imagebuttonmap">imageButtonMap</string>
+    <string name="imagebuttonsettings">imageButtonSettings</string>
+    <string name="togglebuttonedit">toggleButtonEdit</string>
+    <string name="name">Name</string>
+    <string name="textcontact">textContact</string>
+    <string name="textAddress">textAddress</string>
+    <string name="title_activity_maps">Map</string>
+
+</resources>
