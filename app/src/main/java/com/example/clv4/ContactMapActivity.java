@@ -8,6 +8,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -20,6 +24,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +70,53 @@ public class ContactMapActivity extends AppCompatActivity implements OnMapReadyC
 //    LocationListener networkListener;
     Location currentBestLocation;
 //    Location location;
+    stopLocationUpdates();
+    TextView textDirection;
+
+
+    private SensorEventListener mySensorEventListener = new SensorEventListener() {
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+        float [] accelerometerValues;
+        float [] magneticValues;
+
+        public void onSensorChanged(SensorEvent event) {
+            if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                accelerometerValues = event.values;
+            }
+            if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+                magneticValues = event.values;
+            }
+            if (accelerometerValues != null && magneticValues != null) {
+                float R[] = new float[9];
+                float I[] = new float[9];
+                boolean sucess = SensorManager.getRotationMatrix(R,I,accelerometerValues,magneticValues);
+                if (sucess) {
+                    float orientation[] = new float[3];
+                    SensorManager.getOrientation(R,orientation);
+
+                    float azimut = (float)Math.toDegrees(orientation[0]);
+                    if(azimut < 0.0f) {
+                        azimut += 360.0f;
+                    }
+                    String direction;
+                    if (azimut >= 315 || azimut < 45) {
+                        direction = "N";
+                    }
+                    else if (azimut >= 225 && azimut < 315) {
+                        direction = "W";
+                    }
+                    else if (azimut >= 135 && azimut < 225) {
+                        direction = "S";
+                    }
+                    else {
+                        direction = "E";
+                    }
+                    textDirection.setText(direction);
+                }
+            }
+    }
+};
 
 
     @Override
@@ -98,6 +151,20 @@ public class ContactMapActivity extends AppCompatActivity implements OnMapReadyC
         initListButton();
         initMapButton();
         initSettingsButton();
+        initMapTypeButtons();
+
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+
+        if (accelerometer != null && magnetometer != null) {
+            sensorManager.registerListener(mySensorEventListener,accelerometer,SensorManager.SENSOR_DELAY_FASTEST);
+            sensorManager.registerListener(mySensorEventListener,magnetometer,SensorManager.SENSOR_DELAY_FASTEST);
+        }
+        else {
+            Toast.makeText(this,"Sensors not found", Toast.LENGTH_LONG).show();
+        }
+        textDirection = (TextView)findViewById(R.id.textHeading);
 
     }
 
@@ -263,13 +330,7 @@ public class ContactMapActivity extends AppCompatActivity implements OnMapReadyC
     @Override
     public void onPause() {
         super.onPause();
-        try{
-//            locationManager.removeUpdates(gpsListener);
-//            locationManager.removeUpdates(networkListener);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+        stopLocationUpdates();
     }
 
     @Override
@@ -284,6 +345,34 @@ public class ContactMapActivity extends AppCompatActivity implements OnMapReadyC
                 }
             }
         }
+    }
+
+    private void initMapTypeButtons() {
+        RadioGroup rgMapType = findViewById(R.id.radioGroupMapType);
+        rgMapType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton rbNormal = findViewById(R.id.radioButtonNormal);
+                if (rbNormal.isChecked()) {
+                    gMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                }
+                else {
+                    gMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                }
+            }
+        });
+    }
+
+    private void stopLocationUpdates() {
+        if (Build.VERSION.SDK_INT >= 23 &&
+                ContextCompat.checkSelfPermission(getBaseContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+                        PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(getBaseContext(),android.Manifest.permission.ACCESS_COARSE_LOCATION) !=
+                        PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
     }
 
 

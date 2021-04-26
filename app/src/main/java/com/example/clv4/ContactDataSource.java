@@ -16,7 +16,12 @@ public class ContactDataSource {
     private ContactDBHelper dbHelper;
 
     public ContactDataSource(Context context){
-        dbHelper = new ContactDBHelper(context);
+
+
+
+
+
+    dbHelper = new ContactDBHelper(context);
     }
 
     public void open() throws SQLException{
@@ -24,6 +29,7 @@ public class ContactDataSource {
     }
 
     public void close(){
+
         dbHelper.close();
     }
 

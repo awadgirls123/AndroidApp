@@ -10,6 +10,7 @@
         android:id="@+id/scrollView"
         android:layout_width="403dp"
         android:layout_height="512dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
@@ -25,14 +26,12 @@
                 android:id="@+id/textBatteryLevel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="179dp"
+                android:layout_marginEnd="190dp"
                 android:text="100%"
                 android:textColor="@color/black"
-                app:layout_constraintBaseline_toBaselineOf="@+id/switchDelete"
-                app:layout_constraintEnd_toStartOf="@+id/buttonAddContact"
-                app:layout_constraintStart_toEndOf="@+id/switchDelete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -176,7 +175,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="16dp"
                 android:contentDescription="textCell"
-                android:text="Cell Phone:"
+                android:text="Cell Phone"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/editHome"
@@ -286,7 +285,9 @@
             android:layout_marginRight="32dp"
             android:layout_weight="1"
             android:contentDescription="@string/togglebuttonedit"
-            android:text="@string/togglebutton" />
+            android:text="@string/togglebutton"
+            android:textOn="press save ->"
+            android:textOff="edit"/>
 
         <Button
             android:id="@+id/buttonSave"

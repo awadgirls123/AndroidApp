@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/radioGroupSortOrder"
                     android:layout_weight="1"
-                    android:text="Ascending" />
+                    android:text="Ascending" />v
 
                 <RadioButton
                     android:id="@+id/radioDescending"
